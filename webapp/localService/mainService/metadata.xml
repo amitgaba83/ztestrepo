@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZAPRD_C_CART_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZAPRD_C_CARTType" sap:label="Bulk Material Management" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="cart"/>
+                    <PropertyRef Name="plant"/>
+                </Key>
+                <Property Name="Copy_cart_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="cart_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="cart" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:field-control="cart_fc" sap:label="Cart/Shelf" sap:value-list="standard"/>
+                <Property Name="plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ctname" Type="Edm.String" MaxLength="40" sap:label="Cart Name"/>
+                <Property Name="cttype" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:text="cttext" sap:label="Cart Type" sap:value-list="fixed-values"/>
+                <Property Name="cttext" Type="Edm.String" MaxLength="10" sap:label="Cart Name" sap:quickinfo="Cart Type name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ctloc" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Cart Location"/>
+                <NavigationProperty Name="to_bpp" Relationship="ZAPRD_C_CART_CDS.assoc_69D116AD1097028CCF3ADE6F660D8D3A" FromRole="FromRole_assoc_69D116AD1097028CCF3ADE6F660D8D3A" ToRole="ToRole_assoc_69D116AD1097028CCF3ADE6F660D8D3A"/>
+                <NavigationProperty Name="to_Clist" Relationship="ZAPRD_C_CART_CDS.assoc_A26600F5FFACE210DF8D02671A2DECEE" FromRole="FromRole_assoc_A26600F5FFACE210DF8D02671A2DECEE" ToRole="ToRole_assoc_A26600F5FFACE210DF8D02671A2DECEE"/>
+                <NavigationProperty Name="to_Ctyp" Relationship="ZAPRD_C_CART_CDS.assoc_E66F55697A2ED847EF1B8EB33D967663" FromRole="FromRole_assoc_E66F55697A2ED847EF1B8EB33D967663" ToRole="ToRole_assoc_E66F55697A2ED847EF1B8EB33D967663"/>
+                <NavigationProperty Name="to_up" Relationship="ZAPRD_C_CART_CDS.assoc_AB5BED59D095BA160F76DD1165948A3E" FromRole="FromRole_assoc_AB5BED59D095BA160F76DD1165948A3E" ToRole="ToRole_assoc_AB5BED59D095BA160F76DD1165948A3E"/>
+            </EntityType>
+            <EntityType Name="ZAPRD_C_CARTLISTType" sap:label="Bulk Material Management" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="cart"/>
+                    <PropertyRef Name="plant"/>
+                    <PropertyRef Name="ctloc"/>
+                    <PropertyRef Name="material"/>
+                    <PropertyRef Name="fach"/>
+                </Key>
+                <Property Name="Print_sel_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="fach_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="material_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="cart" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Cart/Shelf" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ctloc" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Cart Location" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:field-control="material_fc" sap:label="Material" sap:quickinfo="Material Number" sap:value-list="standard"/>
+                <Property Name="fach" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:field-control="fach_fc" sap:label="Compartment"/>
+                <Property Name="maktx" Type="Edm.String" MaxLength="40" sap:label="Material Description" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="qty" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Required Quantity" sap:quickinfo="Required quantity for mat.management in stockkeeping units"/>
+                <Property Name="meins" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:creatable="false" sap:updatable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="pack" Type="Edm.String" MaxLength="20" sap:label="Packaging"/>
+                <Property Name="maincart" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Main Cart/Shelf" sap:value-list="standard"/>
+                <Property Name="mainfach" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Main Compartment" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Cart" Relationship="ZAPRD_C_CART_CDS.assoc_A26600F5FFACE210DF8D02671A2DECEE" FromRole="ToRole_assoc_A26600F5FFACE210DF8D02671A2DECEE" ToRole="FromRole_assoc_A26600F5FFACE210DF8D02671A2DECEE"/>
+                <NavigationProperty Name="to_MatVH" Relationship="ZAPRD_C_CART_CDS.assoc_A983EBCAB0CC48A2D4D82E9CBE604383" FromRole="FromRole_assoc_A983EBCAB0CC48A2D4D82E9CBE604383" ToRole="ToRole_assoc_A983EBCAB0CC48A2D4D82E9CBE604383"/>
+            </EntityType>
+            <EntityType Name="ZAPRD_I_BMAT_VHType" sap:label="Bulk Material value help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="matnr"/>
+                    <PropertyRef Name="werks"/>
+                </Key>
+                <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="maktx" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
+                <Property Name="put_stra" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Putaway Control"/>
+            </EntityType>
+            <EntityType Name="ZAPRD_I_BP_PlantType" sap:label="User parameter value for plant" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="USRID"/>
+                    <PropertyRef Name="PERNR"/>
+                </Key>
+                <Property Name="USRID" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="System ID" sap:quickinfo="Communication Identification/Number"/>
+                <Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/>
+                <Property Name="WorkCenter" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Kostl" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"/>
+            </EntityType>
+            <EntityType Name="ZAPRD_I_CartMat_VHType" sap:label="Carts by Material" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cart"/>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="Ctloc"/>
+                    <PropertyRef Name="Fach"/>
+                </Key>
+                <Property Name="Cart" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Cart/Shelf"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Ctloc" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Cart Location"/>
+                <Property Name="Fach" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Compartment"/>
+                <Property Name="Pack" Type="Edm.String" MaxLength="20" sap:label="Packaging"/>
+            </EntityType>
+            <EntityType Name="ZAPRD_I_CARTYP_VHType" sap:label="Cart Type value help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cttype"/>
+                    <PropertyRef Name="Spras"/>
+                </Key>
+                <Property Name="Cttype" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="NonNegative" sap:text="Cttext" sap:label="Cart Type"/>
+                <Property Name="Spras" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="Cttext" Type="Edm.String" MaxLength="10" sap:label="Cart Name" sap:quickinfo="Cart Type name"/>
+            </EntityType>
+            <EntityType Name="ZAPRD_I_CART_VHType" sap:label="Value Help for Carts" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cart"/>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Cart" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Cart/Shelf"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Ctname" Type="Edm.String" MaxLength="40" sap:label="Cart Name"/>
+                <Property Name="Cttype" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Cart Type"/>
+                <Property Name="Ctloc" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Cart Location"/>
+            </EntityType>
+            <EntityType Name="ZAPRD_I_UserParameter_PlantType" sap:label="User parameter value for plant" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BName"/>
+                    <PropertyRef Name="UserParameter"/>
+                    <PropertyRef Name="UserParameterValue"/>
+                </Key>
+                <Property Name="BName" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="UserParameter" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Parameter ID" sap:quickinfo="Set/Get parameter ID"/>
+                <Property Name="UserParameterValue" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Parameter value"/>
+            </EntityType>
+            <ComplexType Name="DummyFunctionImportResult">
+                <Property Name="IsInvalid" Type="Edm.Boolean" sap:label="TRUE"/>
+            </ComplexType>
+            <Association Name="assoc_A983EBCAB0CC48A2D4D82E9CBE604383" sap:content-version="1">
+                <End Type="ZAPRD_C_CART_CDS.ZAPRD_C_CARTLISTType" Multiplicity="1" Role="FromRole_assoc_A983EBCAB0CC48A2D4D82E9CBE604383"/>
+                <End Type="ZAPRD_C_CART_CDS.ZAPRD_I_BMAT_VHType" Multiplicity="*" Role="ToRole_assoc_A983EBCAB0CC48A2D4D82E9CBE604383"/>
+            </Association>
+            <Association Name="assoc_A26600F5FFACE210DF8D02671A2DECEE" sap:content-version="1">
+                <End Type="ZAPRD_C_CART_CDS.ZAPRD_C_CARTType" Multiplicity="1" Role="FromRole_assoc_A26600F5FFACE210DF8D02671A2DECEE">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZAPRD_C_CART_CDS.ZAPRD_C_CARTLISTType" Multiplicity="*" Role="ToRole_assoc_A26600F5FFACE210DF8D02671A2DECEE"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_A26600F5FFACE210DF8D02671A2DECEE">
+                        <PropertyRef Name="plant"/>
+                        <PropertyRef Name="cart"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_A26600F5FFACE210DF8D02671A2DECEE">
+                        <PropertyRef Name="plant"/>
+                        <PropertyRef Name="cart"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_E66F55697A2ED847EF1B8EB33D967663" sap:content-version="1">
+                <End Type="ZAPRD_C_CART_CDS.ZAPRD_C_CARTType" Multiplicity="1" Role="FromRole_assoc_E66F55697A2ED847EF1B8EB33D967663"/>
+                <End Type="ZAPRD_C_CART_CDS.ZAPRD_I_CARTYP_VHType" Multiplicity="*" Role="ToRole_assoc_E66F55697A2ED847EF1B8EB33D967663"/>
+            </Association>
+            <Association Name="assoc_AB5BED59D095BA160F76DD1165948A3E" sap:content-version="1">
+                <End Type="ZAPRD_C_CART_CDS.ZAPRD_C_CARTType" Multiplicity="1" Role="FromRole_assoc_AB5BED59D095BA160F76DD1165948A3E"/>
+                <End Type="ZAPRD_C_CART_CDS.ZAPRD_I_UserParameter_PlantType" Multiplicity="0..1" Role="ToRole_assoc_AB5BED59D095BA160F76DD1165948A3E"/>
+            </Association>
+            <Association Name="assoc_69D116AD1097028CCF3ADE6F660D8D3A" sap:content-version="1">
+                <End Type="ZAPRD_C_CART_CDS.ZAPRD_C_CARTType" Multiplicity="1" Role="FromRole_assoc_69D116AD1097028CCF3ADE6F660D8D3A"/>
+                <End Type="ZAPRD_C_CART_CDS.ZAPRD_I_BP_PlantType" Multiplicity="0..1" Role="ToRole_assoc_69D116AD1097028CCF3ADE6F660D8D3A"/>
+            </Association>
+            <EntityContainer Name="ZAPRD_C_CART_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZAPRD_C_CART" EntityType="ZAPRD_C_CART_CDS.ZAPRD_C_CARTType" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZAPRD_C_CARTLIST" EntityType="ZAPRD_C_CART_CDS.ZAPRD_C_CARTLISTType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZAPRD_I_BMAT_VH" EntityType="ZAPRD_C_CART_CDS.ZAPRD_I_BMAT_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZAPRD_I_BP_Plant" EntityType="ZAPRD_C_CART_CDS.ZAPRD_I_BP_PlantType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZAPRD_I_CartMat_VH" EntityType="ZAPRD_C_CART_CDS.ZAPRD_I_CartMat_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZAPRD_I_CARTYP_VH" EntityType="ZAPRD_C_CART_CDS.ZAPRD_I_CARTYP_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZAPRD_I_CART_VH" EntityType="ZAPRD_C_CART_CDS.ZAPRD_I_CART_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZAPRD_I_UserParameter_Plant" EntityType="ZAPRD_C_CART_CDS.ZAPRD_I_UserParameter_PlantType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_A983EBCAB0CC48A2D4D82E9CBE604383" Association="ZAPRD_C_CART_CDS.assoc_A983EBCAB0CC48A2D4D82E9CBE604383" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZAPRD_C_CARTLIST" Role="FromRole_assoc_A983EBCAB0CC48A2D4D82E9CBE604383"/>
+                    <End EntitySet="ZAPRD_I_BMAT_VH" Role="ToRole_assoc_A983EBCAB0CC48A2D4D82E9CBE604383"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_AB5BED59D095BA160F76DD1165948A3E" Association="ZAPRD_C_CART_CDS.assoc_AB5BED59D095BA160F76DD1165948A3E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZAPRD_C_CART" Role="FromRole_assoc_AB5BED59D095BA160F76DD1165948A3E"/>
+                    <End EntitySet="ZAPRD_I_UserParameter_Plant" Role="ToRole_assoc_AB5BED59D095BA160F76DD1165948A3E"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_69D116AD1097028CCF3ADE6F660D8D3A" Association="ZAPRD_C_CART_CDS.assoc_69D116AD1097028CCF3ADE6F660D8D3A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZAPRD_C_CART" Role="FromRole_assoc_69D116AD1097028CCF3ADE6F660D8D3A"/>
+                    <End EntitySet="ZAPRD_I_BP_Plant" Role="ToRole_assoc_69D116AD1097028CCF3ADE6F660D8D3A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A26600F5FFACE210DF8D02671A2DECEE" Association="ZAPRD_C_CART_CDS.assoc_A26600F5FFACE210DF8D02671A2DECEE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZAPRD_C_CART" Role="FromRole_assoc_A26600F5FFACE210DF8D02671A2DECEE"/>
+                    <End EntitySet="ZAPRD_C_CARTLIST" Role="ToRole_assoc_A26600F5FFACE210DF8D02671A2DECEE"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E66F55697A2ED847EF1B8EB33D967663" Association="ZAPRD_C_CART_CDS.assoc_E66F55697A2ED847EF1B8EB33D967663" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZAPRD_C_CART" Role="FromRole_assoc_E66F55697A2ED847EF1B8EB33D967663"/>
+                    <End EntitySet="ZAPRD_I_CARTYP_VH" Role="ToRole_assoc_E66F55697A2ED847EF1B8EB33D967663"/>
+                </AssociationSet>
+                <FunctionImport Name="ZAPRD_C_CARTCopy_cart" ReturnType="ZAPRD_C_CART_CDS.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="ZAPRD_C_CART_CDS.ZAPRD_C_CARTType" sap:applicable-path="Copy_cart_ac">
+                    <Parameter Name="cart" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Cart/Shelf"/>
+                    <Parameter Name="plant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
+                    <Parameter Name="Newcart" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Cart/Shelf"/>
+                </FunctionImport>
+                <FunctionImport Name="ZAPRD_C_CARTLISTPrint_sel" ReturnType="ZAPRD_C_CART_CDS.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="ZAPRD_C_CART_CDS.ZAPRD_C_CARTLISTType" sap:applicable-path="Print_sel_ac">
+                    <Parameter Name="cart" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Cart/Shelf"/>
+                    <Parameter Name="plant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
+                    <Parameter Name="ctloc" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Cart Location"/>
+                    <Parameter Name="material" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+                    <Parameter Name="fach" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Compartment"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="ZAPRD_C_CART_CDS.ZAPRD_C_CARTType/cart" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Carts by Material"/>
+                        <PropertyValue Property="CollectionPath" String="ZAPRD_I_CartMat_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Material"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="cart"/>
+                                    <PropertyValue Property="ValueListProperty" String="Cart"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Ctloc"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Fach"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Pack"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZAPRD_C_CART_CDS.ZAPRD_C_CARTType/cttype" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Cart Type value help"/>
+                        <PropertyValue Property="CollectionPath" String="ZAPRD_I_CARTYP_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="cttype"/>
+                                    <PropertyValue Property="ValueListProperty" String="Cttype"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Spras"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Cttext"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZAPRD_C_CART_CDS.ZAPRD_C_CARTLISTType/material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Bulk Material value help"/>
+                        <PropertyValue Property="DistinctValuesSupported" Bool="true"/>
+                        <PropertyValue Property="CollectionPath" String="ZAPRD_I_BMAT_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="material"/>
+                                    <PropertyValue Property="ValueListProperty" String="matnr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="maincart"/>
+                                    <PropertyValue Property="ValueListProperty" String="put_stra"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="maktx"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZAPRD_C_CART_CDS.ZAPRD_C_CARTLISTType/maktx" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Bulk Material value help"/>
+                        <PropertyValue Property="CollectionPath" String="ZAPRD_I_BMAT_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="material"/>
+                                    <PropertyValue Property="ValueListProperty" String="matnr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="maktx"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="put_stra"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZAPRD_C_CART_CDS.ZAPRD_C_CARTLISTType/maincart" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help for Carts"/>
+                        <PropertyValue Property="CollectionPath" String="ZAPRD_I_CART_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="maincart"/>
+                                    <PropertyValue Property="ValueListProperty" String="Cart"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Ctname"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Cttype"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Ctloc"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZAPRD_C_CART_CDS.ZAPRD_C_CART_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ZAPRD_C_CART_CDS.ZAPRD_C_CARTType/to_Clist" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="ZAPRD_C_CART_CDS.ZAPRD_C_CARTLISTType/meins" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="ZAPRD_C_CART_CDS.ZAPRD_C_CARTLISTType/qty" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="ZAPRD_C_CART_CDS.ZAPRD_C_CART_CDS_Entities/ZAPRD_C_CART" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Copy_cart_ac</PropertyPath>
+                                <PropertyPath>cart_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Clist"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Ctyp"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_bpp"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_up"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Copy_cart_ac</PropertyPath>
+                                <PropertyPath>cart_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZAPRD_C_CART_CDS.ZAPRD_C_CART_CDS_Entities/ZAPRD_C_CARTLIST" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Print_sel_ac</PropertyPath>
+                                <PropertyPath>fach_fc</PropertyPath>
+                                <PropertyPath>material_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Cart"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_MatVH"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Print_sel_ac</PropertyPath>
+                                <PropertyPath>fach_fc</PropertyPath>
+                                <PropertyPath>material_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZAPRD_C_CART_CDS.ZAPRD_C_CARTLISTType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>fach</PropertyPath>
+                        <PropertyPath>material</PropertyPath>
+                        <PropertyPath>ctloc</PropertyPath>
+                        <PropertyPath>plant</PropertyPath>
+                        <PropertyPath>cart</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZAPRD_C_CART_CDS.ZAPRD_C_CARTType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>plant</PropertyPath>
+                        <PropertyPath>cart</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://sapda1-https:44301/sap/opu/odata/sap/ZAPRD_C_CART_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://sapda1-https:44301/sap/opu/odata/sap/ZAPRD_C_CART_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
